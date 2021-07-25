@@ -1,0 +1,9 @@
+*/xcbkptlist
+*/xcuserstate
+*/.DS_Store
+*/xcuserdata/
+*.idea
+*/xcshareddata
+.DS_Store
+
+*.xcworkspace
