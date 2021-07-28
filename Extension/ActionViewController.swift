@@ -13,11 +13,14 @@ class ActionViewController: UIViewController {
 	@IBOutlet weak var script: UITextView!
 	var pageTitle = ""
 	var pageURL = ""
+	let defaults = UserDefaults.standard
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		getScriptText()
 		
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
+		navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(getExamples))
 		
 		let notificationCenter = NotificationCenter.default
 		notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -38,6 +41,10 @@ class ActionViewController: UIViewController {
 			}
 		}
     }
+	
+	override func viewDidAppear(_ animated: Bool) {
+		getScriptText()
+	}
 
     @objc func done() {
         let item = NSExtensionItem()
@@ -46,6 +53,7 @@ class ActionViewController: UIViewController {
 		let customJavaScript = NSItemProvider(item: webDictionary, typeIdentifier: kUTTypePropertyList as String)
 		item.attachments = [customJavaScript]
 		extensionContext?.completeRequest(returningItems: [item])
+		saveUserJS()
     }
 	
 	@objc func adjustForKeyboard(notification: Notification) {
@@ -63,5 +71,24 @@ class ActionViewController: UIViewController {
 		
 		let selectedRange = script.selectedRange
 		script.scrollRangeToVisible(selectedRange)
+	}
+	
+	@objc func getExamples() {
+		let alert = UIAlertController(title: "Examples", message: "Some examples to run: \n 1. alert(\"Hello World\");\n 2. alert(2 + 2);", preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+		present(alert, animated: true, completion: nil)
+	}
+	
+	func saveUserJS() {
+		guard let url = URL(string: pageURL) else { return }
+		defaults.setValue(script.text, forKey: url.host!)
+	}
+	
+	func getScriptText() {
+		guard let url = URL(string: pageURL) else { return }
+		
+		if defaults.string(forKey: url.host!) != nil {
+			script.text = defaults.string(forKey: url.host!)
+		}
 	}
 }
