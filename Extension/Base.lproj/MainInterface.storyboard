@@ -27,10 +27,10 @@
                         <viewLayoutGuide key="safeArea" id="VVe-Uw-JpX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="DZg-e2-OBJ" firstAttribute="bottom" secondItem="VVe-Uw-JpX" secondAttribute="bottom" id="0Wq-Eo-7kD"/>
-                            <constraint firstItem="DZg-e2-OBJ" firstAttribute="trailing" secondItem="VVe-Uw-JpX" secondAttribute="trailing" id="ghf-WC-ttn"/>
-                            <constraint firstItem="DZg-e2-OBJ" firstAttribute="leading" secondItem="VVe-Uw-JpX" secondAttribute="leading" id="o0c-5x-WCy"/>
-                            <constraint firstItem="DZg-e2-OBJ" firstAttribute="top" secondItem="VVe-Uw-JpX" secondAttribute="top" id="xj3-No-GZW"/>
+                            <constraint firstItem="DZg-e2-OBJ" firstAttribute="leading" secondItem="VVe-Uw-JpX" secondAttribute="leading" id="70R-W4-yaz"/>
+                            <constraint firstItem="DZg-e2-OBJ" firstAttribute="bottom" secondItem="VVe-Uw-JpX" secondAttribute="bottom" id="JO9-69-qV1"/>
+                            <constraint firstItem="DZg-e2-OBJ" firstAttribute="centerX" secondItem="zMn-AG-sqS" secondAttribute="centerX" id="OTI-9E-1Nr"/>
+                            <constraint firstItem="DZg-e2-OBJ" firstAttribute="top" secondItem="VVe-Uw-JpX" secondAttribute="top" id="SdG-yd-nub"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pZG-E3-SoV"/>
